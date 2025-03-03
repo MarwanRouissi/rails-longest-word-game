@@ -9,11 +9,11 @@ class GamesController < ApplicationController
     word_serialized = URI.parse(url).read
     word_valid = JSON.parse(word_serialized)['found']
     if !word_valid
-      @msg = "Sorry but #{params[:word]} does not seem to be a valid English word..."
+      @msg = "Sorry but <b>#{params[:word]}</b> does not seem to be a valid English word..."
     elsif !word_valid?(params[:word], params[:grid].split)
-      @msg = "Sorry but #{params[:word]} can't be built out of #{params[:grid]}"
+      @msg = "Sorry but <b>#{params[:word]}</b> can't be built out of #{params[:grid]}"
     else
-      @msg = "Congratulations! #{params[:word]} is a valid English word!"
+      @msg = "<b>Congratulations!</b> #{params[:word]} is a valid English word!"
     end
   end
 
